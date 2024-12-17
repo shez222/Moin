@@ -1,20 +1,42 @@
 import React from 'react';
+import { useRouter } from 'next/navigation';
 
 const PresidentsMessage = () => {
+    const router = useRouter();
   return (
-    <section className="bg-gray-50 py-12">
+    <section className="bg-white py-12">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-6">
-          President’s Message
+        {/* Heading */}
+        <h2 className="text-4xl sm:text-5xl font-bold text-[#1D3851] mb-6">
+          President’s <span className="text-[#45C0C9]">Message</span>
         </h2>
-        <p className="text-gray-600 mb-6">
-          Dear Stakeholders, Administrators &nbsp;
-          <br />
-          The Pakistan Neurology Network (PNN) does not endorse, guarantee or lobby for whatsoever company. It aims to connect neurologists, professionals & students under one platform for collaborative growth and knowledge sharing. We believe in the empowerment of neurology professionals who will shape the future of healthcare in Pakistan.
+        
+        {/* Intro Text */}
+        <p className="text-gray-700 text-lg mb-6">
+          Dear Colleagues, Assalamoalaikum.
         </p>
-        <button className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-6 rounded">
-          Read More Statements
-        </button>
+        
+        {/* Main Body Text with highlights */}
+        <p className="text-gray-700 text-base mb-6 leading-relaxed">
+          The <span className="text-[#45C0C9] font-semibold">Pakistan Society of Neurology (PSN)</span> has been the official representative body for Pakistani neurologists for nearly three decades, committed to fostering connections, promoting excellence, and advancing the field of neurology in our country. The <span className="text-[#45C0C9] font-semibold">Pakistan Society of Neurology (PSN)</span> proudly invites all eligible neurologists with postgraduate qualification in Neurology to register for <span className="text-[#45C0C9] font-semibold">PSN Membership</span> and inclusion in the <span className="text-[#45C0C9] font-semibold">PSN Digital Directory</span>. This initiative aims to further strengthen our professional network and enhance advocacy for the field of neurology in Pakistan. In this context Helix Pharma has promised unconditional support to accomplish this goal. Their representatives will visit you to facilitate the process of registration. Profound regards,
+        </p>
+        
+        <p className="text-gray-700 text-base mb-8">
+          Professor Naila N. Shahbaz
+        </p>
+        
+        {/* Button */}
+        <div className="mb-8">
+          <button className="bg-[#45C0C9] hover:bg-[#3dadb7] text-white font-semibold py-3 px-6 rounded text-base"
+            onClick={() => router.push("/membershipForm/step1")}>
+            Click to Open Membership Form
+          </button>
+        </div>
+        
+        {/* Footer Note */}
+        <p className="text-gray-500 text-sm">
+          This is collaborative efforts of Helix Pharma (Pvt) Limited and Pakistan Society of Neurology
+        </p>
       </div>
     </section>
   );

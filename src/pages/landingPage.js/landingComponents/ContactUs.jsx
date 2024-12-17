@@ -2,44 +2,72 @@ import React from 'react';
 
 const ContactUs = () => {
   return (
-    <section className="py-12">
+    <section className="bg-[#F4FBFF] py-12">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-gray-800 mb-8">Contact Us</h2>
-        <p className="text-gray-600 mb-6">
-          Get In Touch &amp; Connect Us Anytime We Are With Back
-        </p>
-        <form className="max-w-xl space-y-4">
+        {/* Heading and subtext responsive alignment */}
+        <div className="mb-8 text-center md:text-left">
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#1D3851] mb-4">
+            Contact Us
+          </h2>
+          <p className="text-[#1D3851] text-base">
+            Feel Free To Contact Us At Anytime, We Will Get Back As Soon As Possible
+          </p>
+        </div>
+
+        {/* Responsive grid: 1 column on small, 2 columns on md+ (each half width) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          {/* Left Side (Form Section) */}
           <div>
-            <label className="block text-gray-700 mb-1">Name</label>
-            <input
-              type="text"
-              className="w-full border border-gray-300 rounded py-2 px-3 text-gray-700 outline-none focus:ring-2 focus:ring-teal-500"
-              placeholder="Your Name"
+            <form className="space-y-6 w-full max-w-xl">
+              {/* Name Field */}
+              <div>
+                <label className="block text-[#1D3851] font-semibold mb-2">Name</label>
+                <input
+                  type="text"
+                  className="w-full bg-[#E6F2F9] border border-transparent rounded py-3 px-4 text-[#1D3851] outline-none focus:ring-2 focus:ring-teal-500 placeholder-[#1D3851]"
+                  placeholder="Enter Name"
+                />
+              </div>
+              {/* Email Field */}
+              <div>
+                <label className="block text-[#1D3851] font-semibold mb-2">Email</label>
+                <input
+                  type="email"
+                  className="w-full bg-[#E6F2F9] border border-transparent rounded py-3 px-4 text-[#1D3851] outline-none focus:ring-2 focus:ring-teal-500 placeholder-[#1D3851]"
+                  placeholder="Enter Email"
+                />
+              </div>
+              {/* Message Field */}
+              <div>
+                <label className="block text-[#1D3851] font-semibold mb-2">Message</label>
+                <textarea
+                  className="w-full bg-[#E6F2F9] border border-transparent rounded py-3 px-4 text-[#1D3851] outline-none focus:ring-2 focus:ring-teal-500 placeholder-[#1D3851]"
+                  placeholder="Enter Your Message"
+                  rows={4}
+                ></textarea>
+              </div>
+            </form>
+          </div>
+
+          {/* Right Side (Image Section) */}
+          <div className="flex justify-center items-center">
+            <img
+              src="/banner.jpeg"
+              alt="Pakistan Society of Neurology"
+              className="rounded-md shadow-md w-full max-w-2xl"
             />
           </div>
-          <div>
-            <label className="block text-gray-700 mb-1">Email</label>
-            <input
-              type="email"
-              className="w-full border border-gray-300 rounded py-2 px-3 text-gray-700 outline-none focus:ring-2 focus:ring-teal-500"
-              placeholder="Your Email"
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700 mb-1">Message</label>
-            <textarea
-              className="w-full border border-gray-300 rounded py-2 px-3 text-gray-700 outline-none focus:ring-2 focus:ring-teal-500"
-              placeholder="Your Message"
-              rows={4}
-            ></textarea>
-          </div>
+        </div>
+
+        {/* Button at the bottom center for all screens */}
+        <div className="flex justify-center mt-8">
           <button
-            type="submit"
-            className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-6 rounded"
+            type="button"
+            className="bg-[#45C0C9] hover:bg-[#3dadb7] text-white font-semibold py-5 px-40 rounded"
           >
             Submit
           </button>
-        </form>
+        </div>
       </div>
     </section>
   );
