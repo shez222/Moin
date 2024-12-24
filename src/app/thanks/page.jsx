@@ -1,5 +1,5 @@
 "use client";
-import ThankYouPage from "@/pages/Thanks";
+import ThankYouPage from "@/app/pages/Thanks";
 
 export default function Thanks() {
   return <ThankYouPage />;

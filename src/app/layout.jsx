@@ -1,6 +1,8 @@
 // /app/layout.jsx
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/../context/AuthContext";
  // Optional: If you have a Footer
 
 const geistSans = Geist({
@@ -26,9 +28,7 @@ export default function RootLayout({ children }) {
       >
         {/* Optional Navbar */}
         {/* <Navbar /> */}
-
-        <main className="min-h-screen">{children}</main>
-
+        <AuthProvider>{children}</AuthProvider>
         {/* Optional Footer */}
         {/* <Footer /> */}
       </body>
