@@ -217,6 +217,7 @@ export default function IdCard({ doctor }) {
           >
             Flip Card
           </button>
+          
           <button
             onClick={downloadCard}
             className="flex-1 bg-orange-400 hover:bg-orange-500 rounded-3xl h-12 text-white"
