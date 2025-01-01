@@ -38,6 +38,17 @@ const MembershipFormStep = () => {
     },
   });
 
+  //Handling PMDC Number and Fellowship with alphanumneric
+  const handleAlphanumericInput = (e, field) => {
+    const value = e.target.value;
+    const alphanumericRegex = /^[a-zA-Z0-9]*$/;
+
+    if (alphanumericRegex.test(value)) {
+      // Update the state only if the input is alphanumeric
+      setFormData((prev) => ({ ...prev, [field]: value }));
+    }
+  };
+
   // State for form validation errors
   const [errors, setErrors] = useState({});
 
@@ -193,16 +204,15 @@ const MembershipFormStep = () => {
               field.id === "dob"
                 ? "date"
                 : field.id === "email"
-                ? "email"
-                : "text"
+                  ? "email"
+                  : "text"
             }
             id={fieldId}
             placeholder={field.placeholder}
             value={fieldValue}
             onChange={handleChange}
-            className={`w-full pl-12 border ${
-              fieldError ? "border-red-500" : "border-gray-300"
-            } rounded-md py-3 px-4 text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-[#45C0C9] focus:outline-none shadow-sm`}
+            className={`w-full pl-12 border ${fieldError ? "border-red-500" : "border-gray-300"
+              } rounded-md py-3 px-4 text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-[#45C0C9] focus:outline-none shadow-sm`}
           />
           {/* Display Validation Error */}
           {fieldError && (
@@ -224,8 +234,8 @@ const MembershipFormStep = () => {
             Pakistan <span className="text-[#45C0C9]">Society Of Neurology</span> Membership Form!
           </h1>
           <p className="text-[#1D3851] text-base md:text-lg mb-8 max-w-2xl">
-            Welcome to the Pakistan Society of Neurology (PSN)! We are excited to have you join our community 
-            of professionals dedicated to advancing the field of neurology in Pakistan. To become a member, 
+            Welcome to the Pakistan Society of Neurology (PSN)! We are excited to have you join our community
+            of professionals dedicated to advancing the field of neurology in Pakistan. To become a member,
             please complete the following steps in the membership registration process.
           </p>
         </div>
@@ -244,11 +254,31 @@ const MembershipFormStep = () => {
               <div className="space-y-6">
                 {[
                   { id: "name", label: "Name", placeholder: "Enter your full name", icon: <FiUser /> },
-                  { id: "residence", label: "Member Residence", placeholder: "Enter your residence", icon: <FiMapPin /> },
+                  {
+                    id: "residence", label: "Member Residence", placeholder: "Enter your residence", icon: <FiMapPin />, type: "dropdown",
+                    options: [
+                      { value: "local", label: "Local" },
+                      { value: "overseas", label: "Overseas Pakistani" },
+                    ],
+                  },
                   { id: "gender", label: "Gender", placeholder: "Enter your gender", icon: <FiUser /> },
-                  { id: "pmdcNumber", label: "PMDC Number", placeholder: "Enter your PMDC number", icon: <FiClipboard /> },
+                  {
+                    id: "pmdcNumber", label: "PMDC Number", placeholder: "Enter your PMDC number", icon: <FiClipboard />, type: "text",
+                    onChange: (e) => handleAlphanumericInput(e, "pmdcNumber"),
+                  },
                   { id: "address", label: "Address", placeholder: "Enter your address", icon: <FiMapPin /> },
-                  { id: "province", label: "Province", placeholder: "Enter your province", icon: <FiMapPin /> },
+                  {
+                    id: "province", label: "Province", placeholder: "Enter your province", icon: <FiMapPin />, type: "dropdown",
+                    options: [
+                      { value: "sindh", label: "Sindh" },
+                      { value: "punjab", label: "Punjab" },
+                      { value: "kpk", label: "Khyber Pakhtunkhwa (KPK)" },
+                      { value: "balochistan", label: "Balochistan" },
+                      { value: "gilgit_baltistan", label: "Gilgit-Baltistan" },
+                      { value: "fata", label: "FATA" },
+                      { value: "notApplicable", label: "Not Applicable" },
+                    ],
+                  },
                   { id: "country", label: "Country", placeholder: "Enter your country", icon: <FiMapPin /> },
                   { id: "email", label: "Email", placeholder: "Enter your email", icon: <FiMail /> },
                 ].map((field) => renderInput(field))}
@@ -260,7 +290,10 @@ const MembershipFormStep = () => {
                   { id: "fathersName", label: "Father's Name", placeholder: "Enter your father's name", icon: <FiUser /> },
                   { id: "dob", label: "Date of Birth", placeholder: "", icon: <FiCalendar /> },
                   { id: "cnic", label: "CNIC Number", placeholder: "Enter your CNIC number", icon: <FiClipboard /> },
-                  { id: "fellowshipNumber", label: "Fellowship Number", placeholder: "Enter your fellowship number", icon: <FiClipboard /> },
+                  {
+                    id: "fellowshipNumber", label: "Fellowship Number", placeholder: "Enter your fellowship number", icon: <FiClipboard />, type: "text",
+                    onChange: (e) => handleAlphanumericInput(e, "fellowshipNumber"),
+                  },
                   { id: "city", label: "City", placeholder: "Enter your city", icon: <FiMapPin /> },
                   { id: "zip", label: "Zip/Postal Code", placeholder: "Enter your zip/postal code", icon: <FiMapPin /> },
                   { id: "phone", label: "Phone with WhatsApp", placeholder: "Enter your phone number", icon: <FiPhone /> },
@@ -269,11 +302,11 @@ const MembershipFormStep = () => {
             </div>
 
             {/* Additional Training or Fellowship */}
-            <h2 className="text-4xl font-bold text-[#1D3851] mb-6">
+            {/* <h2 className="text-4xl font-bold text-[#1D3851] mb-6">
               Additional Training <span className="text-[#45C0C9]">or</span> Fellowship
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              {/* Left Column Fields */}
+              Left Column Fields
               <div className="space-y-6">
                 {[
                   { id: "name", label: "Name", placeholder: "Enter your full name", icon: <FiUser /> },
@@ -281,20 +314,20 @@ const MembershipFormStep = () => {
                 ].map((field) => renderInput(field, "additionalTrainingInfo"))}
               </div>
 
-              {/* Right Column Fields */}
+              Right Column Fields
               <div className="space-y-6">
                 {[
                   { id: "duration", label: "Duration", placeholder: "Enter the duration", icon: <FiCalendar /> },
                 ].map((field) => renderInput(field, "additionalTrainingInfo"))}
               </div>
-            </div>
+            </div> */}
 
             {/* Applicant Affiliation */}
-            <h2 className="text-4xl font-bold text-[#1D3851] mb-6">
+            {/* <h2 className="text-4xl font-bold text-[#1D3851] mb-6">
               Applicant <span className="text-[#45C0C9]">Affiliation</span>
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              {/* Left Column Fields */}
+            </h2> */}
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              Left Column Fields
               <div className="space-y-6">
                 {[
                   { id: "institution", label: "Institution", placeholder: "Enter your institution", icon: <FiMapPin /> },
@@ -302,13 +335,13 @@ const MembershipFormStep = () => {
                 ].map((field) => renderInput(field, "applicantAffiliation"))}
               </div>
 
-              {/* Right Column Fields */}
+              Right Column Fields
               <div className="space-y-6">
                 {[
                   { id: "designation", label: "Designation", placeholder: "Enter your designation", icon: <FiUser /> },
                 ].map((field) => renderInput(field, "applicantAffiliation"))}
               </div>
-            </div>
+            </div> */}
 
             {/* Display Submission Error */}
             {submissionError && (
@@ -332,9 +365,8 @@ const MembershipFormStep = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full md:w-auto bg-[#45C0C9] hover:bg-[#3dadb7] text-white font-semibold py-3 px-8 rounded transition duration-300 shadow-sm ${
-                  isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
+                className={`w-full md:w-auto bg-[#45C0C9] hover:bg-[#3dadb7] text-white font-semibold py-3 px-8 rounded transition duration-300 shadow-sm ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
               >
                 {isSubmitting ? 'Submitting...' : 'Draft Complete'}
               </button>
@@ -584,8 +616,8 @@ export default MembershipFormStep;
 //             Pakistan <span className="text-[#45C0C9]">Society Of Neurology</span> Membership Form!
 //           </h1>
 //           <p className="text-[#1D3851] text-base md:text-lg mb-8 max-w-2xl">
-//             Welcome to the Pakistan Society of Neurology (PSN)! We are excited to have you join our community 
-//             of professionals dedicated to advancing the field of neurology in Pakistan. To become a member, 
+//             Welcome to the Pakistan Society of Neurology (PSN)! We are excited to have you join our community
+//             of professionals dedicated to advancing the field of neurology in Pakistan. To become a member,
 //             please complete the following steps in the membership registration process.
 //           </p>
 //         </div>
@@ -825,8 +857,8 @@ export default MembershipFormStep;
 //             Pakistan <span className="text-[#45C0C9]">Society Of Neurology</span> Membership Form!
 //           </h1>
 //           <p className="text-[#1D3851] text-base md:text-lg mb-8 max-w-2xl">
-//             Welcome to the Pakistan Society of Neurology (PSN)! We are excited to have you join our community 
-//             of professionals dedicated to advancing the field of neurology in Pakistan. To become a member, 
+//             Welcome to the Pakistan Society of Neurology (PSN)! We are excited to have you join our community
+//             of professionals dedicated to advancing the field of neurology in Pakistan. To become a member,
 //             please complete the following steps in the membership registration process.
 //           </p>
 //         </div>

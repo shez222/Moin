@@ -15,7 +15,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <header className="w-full bg-[#F4FBFF] py-12 sm:py-20 relative overflow-hidden">
+    <header className="w-full bg-[#F4FBFF] ss relative overflow-hidden">
       <div className="container mx-auto px-4 flex flex-col-reverse lg:flex-row items-center">
 
         {/* Left Side: Heading and Text */}
@@ -54,7 +54,7 @@ const HeroSection = () => {
             }
           >
             <img
-              src="/mask.png"
+              src="/Mask.png"
               alt="Doctor"
               className="max-w-full h-auto"
             />

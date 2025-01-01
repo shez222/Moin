@@ -79,13 +79,13 @@ import {
 const criteriaData = [
   { title: 'Fill Out the Form', desc: 'Basic application process', icon: FiUserCheck },
   { title: 'Upload Photo', desc: 'Passport size photograph', icon: FiCamera },
-  { title: 'Verify ID#', desc: 'National ID verification', icon: FiClipboard },
+  { title: 'Submit CNIC No.', desc: 'National ID verification', icon: FiClipboard },
   { title: 'Submit Form', desc: 'Submit your application', icon: FiFile },
   { title: 'Credentials Review', desc: 'We will review qualifications', icon: FiBookOpen },
   { title: 'Deposit Fee', desc: 'Complete the payment process', icon: FiDollarSign },
   { title: 'Upload Payment Proof', desc: 'Receipt or transaction screenshot', icon: FiUpload },
-  { title: 'Obtain Card', desc: 'Membership card issued', icon: FiCreditCard },
-  { title: 'Facilitation by PNN Partners', desc: 'Get access to partner benefits', icon: FiShare2 }
+  { title: 'Generate Card', desc: 'Membership card issued', icon: FiCreditCard },
+  // { title: 'Facilitation by PNN Partners', desc: 'Get access to partner benefits', icon: FiShare2 }
 ];
 
 const EligibilityCriteria = () => {

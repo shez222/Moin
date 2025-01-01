@@ -6,20 +6,20 @@ const cardsData = [
     intro: 'We collect personal information in the following ways:',
     bullets: [
       'Personal Identification Information: When you visit our website, contact us, or make use of our services, we may collect personal information such as your name, email address, phone number, and other relevant details.',
-      'Medical Information: If you request a consultation or use any of our health services, you may be asked to provide medical history, symptoms, and other health-related information. This data is collected for the purpose of offering medical advice and treatment.',
+      // 'Medical Information: If you request a consultation or use any of our health services, you may be asked to provide medical history, symptoms, and other health-related information. This data is collected for the purpose of offering medical advice and treatment.',
       'Usage Data: We may collect information about your use of our website, such as your IP address, browser type, device information, and browsing patterns through cookies and other tracking technologies.'
     ]
-  },
-  {
-    title: 'How We Use Your Information',
-    intro: 'We may use the information we collect for the following purposes:',
-    bullets: [
-      'Provide Medical Services: To offer consultation, treatment, and medical advice based on the information you provide.',
-      'Communicate with You: To send updates, reminders, appointment confirmations, and other important information related to your consultations or treatments.',
-      'Improve Our Website: To enhance the user experience and functionality of our website, including troubleshooting issues and improving services.',
-      'Marketing and Promotions: With your consent, we may send promotional materials related to our services or events. You can opt-out of receiving such communications at any time.'
-    ]
   }
+  // {
+  //   title: 'How We Use Your Information',
+  //   intro: 'We may use the information we collect for the following purposes:',
+  //   bullets: [
+  //     'Provide Medical Services: To offer consultation, treatment, and medical advice based on the information you provide.',
+  //     'Communicate with You: To send updates, reminders, appointment confirmations, and other important information related to your consultations or treatments.',
+  //     'Improve Our Website: To enhance the user experience and functionality of our website, including troubleshooting issues and improving services.',
+  //     'Marketing and Promotions: With your consent, we may send promotional materials related to our services or events. You can opt-out of receiving such communications at any time.'
+  //   ]
+  // }
 ];
 
 const PrivacyPolicy = () => {
@@ -33,8 +33,8 @@ const PrivacyPolicy = () => {
           </h2>
           <div className="flex space-x-2">
             {/* Left Arrow */}
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="w-10 h-10 flex items-center justify-center rounded-full bg-[#45C0C9] hover:bg-[#3dadb7] text-white"
               aria-label="Previous"
             >
@@ -49,13 +49,13 @@ const PrivacyPolicy = () => {
               </svg>
             </button>
             {/* Right Arrow */}
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="w-10 h-10 flex items-center justify-center rounded-full bg-[#45C0C9] hover:bg-[#3dadb7] text-white"
               aria-label="Next"
             >
               <svg
-                className="w-5 h-5"
+                className="w-5 h-5 transform rotate-270"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth={3}

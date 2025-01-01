@@ -1,8 +1,8 @@
-import React, { useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import { FiUpload } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { AuthContext } from "@/../context/AuthContext"; 
+import { AuthContext } from "@/../context/AuthContext";
 
 const UploadProfileImage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -42,31 +42,31 @@ const UploadProfileImage = () => {
       setAgreementError("You must agree to proceed.");
       return;
     }
-  
+
     if (!selectedFile) {
       setFileError("Please select a file to upload.");
       return;
     }
-  
+
     setUploading(true);
-  
+
     try {
       // Step 1: Upload to Cloudinary
       const formData = new FormData();
       formData.append("file", selectedFile);
       formData.append("upload_preset", "Pakistan Society of Neurology"); // Replace with your Cloudinary upload preset
       formData.append("cloud_name", "dnjlzu3s7"); // Replace with your Cloudinary cloud name
-  
+
       const cloudinaryResponse = await axios.post(
         "https://api.cloudinary.com/v1_1/dnjlzu3s7/image/upload",
         formData
       );
 
-  
+
       const imageUrl = cloudinaryResponse.data.secure_url; // Extract the secure URL
       console.log("Cloudinary URL:", imageUrl);
-      
-  
+
+
       // Step 2: Send the URL to your backend
       // const backendResponse = await axios.post("/api/save-profile-image", {
       //   imageUrl, // Send the Cloudinary URL
@@ -79,7 +79,7 @@ const UploadProfileImage = () => {
         },
         body: JSON.stringify(imageUrl),
       })
-  
+
       if (backendResponse.status === 200) {
         alert("Image uploaded and saved successfully!");
       } else {
@@ -92,7 +92,7 @@ const UploadProfileImage = () => {
       setUploading(false);
     }
   };
-  
+
 
   return (
     <section className="bg-white py-12 min-h-screen">
@@ -104,7 +104,7 @@ const UploadProfileImage = () => {
             Pakistan <span className="text-[#45C0C9]">Society Of Neurology</span> Membership Form!
           </h1>
           <p className="text-[#1D3851] text-base md:text-lg max-w-2xl mx-auto">
-            Welcome to the Pakistan Society of Neurology (PSN)! We are excited to have you join our
+            Pakistan Neurology Network! We are excited to have you join our
             community of professionals dedicated to advancing the field of neurology in Pakistan.
             To become a member, please complete the following steps in the membership registration process.
           </p>
@@ -179,11 +179,10 @@ const UploadProfileImage = () => {
               type="button"
               onClick={handleSubmit}
               disabled={!selectedFile || fileError !== "" || !isAgreed || uploading}
-              className={`w-full md:w-auto ${
-                !selectedFile || fileError !== "" || !isAgreed || uploading
-                  ? "bg-[#A0D2E7] cursor-not-allowed"
-                  : "bg-[#45C0C9] hover:bg-[#3dadb7]"
-              } text-white font-semibold py-3 px-8 rounded transition duration-300 shadow-sm`}
+              className={`w-full md:w-auto ${!selectedFile || fileError !== "" || !isAgreed || uploading
+                ? "bg-[#A0D2E7] cursor-not-allowed"
+                : "bg-[#45C0C9] hover:bg-[#3dadb7]"
+                } text-white font-semibold py-3 px-8 rounded transition duration-300 shadow-sm`}
             >
               {uploading ? "Uploading..." : "Submit"}
             </button>

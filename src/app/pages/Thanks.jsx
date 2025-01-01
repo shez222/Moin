@@ -40,7 +40,7 @@ const ThankYouPage = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.5 }}
         >
-          Your form has been submitted successfully. We appreciate your interest in joining the Pakistan Society of Neurology.
+          Your form has been submitted successfully. We appreciate your interest in joining the Pakistan Society of Neurology.Please check your email for Login Credentials
         </motion.p>
 
         {/* Call-to-Action Button with Animation */}

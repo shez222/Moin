@@ -19,7 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Pagination from "@/../components/Pagination"; // Adjust path if needed
 
 // IMPORTANT: Import the updated IdCard component
-import IdCard from "@/app/doctor/Idcard/IDCard"; // Adjust this path to wherever your IdCard file is located.
+import IdCard from "../Idcard/IDCard"; // Adjust this path to wherever your IdCard file is located.
 
 const AdminDashboard = () => {
   const { auth, loading } = useContext(AuthContext);

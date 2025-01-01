@@ -16,7 +16,7 @@ import {
   FiBook,
   FiImage, // Imported FiIdBadge for ID Card tab
 } from "react-icons/fi";
-import IDCard from "@/app/doctor/Idcard/IDCard"; // Imported IDCard component
+import IDCard from "@/app/admin/Idcard/IDCard"; // Imported IDCard component
 import LogoutButton from "@/app/logout/LogoutButton"; // Import the LogoutButton component
 
 const DoctorDashboard = () => {
@@ -82,7 +82,7 @@ const DoctorDashboard = () => {
             setSubmissionError(data.error || 'Failed to fetch profile.');
           }
         } else {
-          console.log('data', typeof( data.formDataId.isFinalized));
+          console.log('data', typeof (data.formDataId.isFinalized));
 
           setFormData(data.formDataId);
           setIsFinalized(data.formDataId.isFinalized);
@@ -289,19 +289,17 @@ const DoctorDashboard = () => {
               field.id === "dob"
                 ? "date"
                 : field.id === "email"
-                ? "email"
-                : "text"
+                  ? "email"
+                  : "text"
             }
             id={fieldId}
             placeholder={field.placeholder}
             value={fieldValue}
             onChange={handleChange}
             disabled={isFinalized} // Disable input if finalized
-            className={`w-full pl-12 border ${
-              fieldError ? "border-red-500" : "border-gray-300"
-            } rounded-md py-3 px-4 text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-[#45C0C9] focus:outline-none shadow-sm ${
-              isFinalized ? "bg-gray-100 cursor-not-allowed" : ""
-            }`}
+            className={`w-full pl-12 border ${fieldError ? "border-red-500" : "border-gray-300"
+              } rounded-md py-3 px-4 text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-[#45C0C9] focus:outline-none shadow-sm ${isFinalized ? "bg-gray-100 cursor-not-allowed" : ""
+              }`}
           />
           {/* Display Validation Error */}
           {fieldError && (
@@ -342,53 +340,49 @@ const DoctorDashboard = () => {
           <nav className="flex space-x-4 border-b-2 border-gray-200">
             <button
               onClick={() => setActiveTab("profile")}
-              className={`py-2 px-4 ${
-                activeTab === "profile"
+              className={`py-2 px-4 ${activeTab === "profile"
                   ? "border-b-4 border-[#45C0C9] text-[#45C0C9] font-semibold"
                   : "text-gray-500 hover:text-[#45C0C9]"
-              }`}
+                }`}
               aria-current={activeTab === "profile" ? "page" : undefined}
             >
               <FiUser className="inline-block mr-1" />
               Profile Information
             </button>
             {isFinalized === true && (
-            <button
-              onClick={() => setActiveTab("professional")}
-              className={`py-2 px-4 ${
-                activeTab === "professional"
-                  ? "border-b-4 border-[#45C0C9] text-[#45C0C9] font-semibold"
-                  : "text-gray-500 hover:text-[#45C0C9]"
-              }`}
-              aria-current={activeTab === "professional" ? "page" : undefined}
-            >
-              <FiImage className="inline-block mr-1" />
-              Upload Profile Image
-            </button>
+              <button
+                onClick={() => setActiveTab("professional")}
+                className={`py-2 px-4 ${activeTab === "professional"
+                    ? "border-b-4 border-[#45C0C9] text-[#45C0C9] font-semibold"
+                    : "text-gray-500 hover:text-[#45C0C9]"
+                  }`}
+                aria-current={activeTab === "professional" ? "page" : undefined}
+              >
+                <FiImage className="inline-block mr-1" />
+                Upload Profile Image
+              </button>
             )}
-            {approvalStatus === "Approved" &&  isFinalized === true && (
-            <button
-              onClick={() => setActiveTab("publications")}
-              className={`py-2 px-4 ${
-                activeTab === "publications"
-                  ? "border-b-4 border-[#45C0C9] text-[#45C0C9] font-semibold"
-                  : "text-gray-500 hover:text-[#45C0C9]"
-              }`}
-              aria-current={activeTab === "publications" ? "page" : undefined}
-            >
-              <FiBook className="inline-block mr-1" />
-              Upload Bank Slip
-            </button>
+            {approvalStatus === "Approved" && isFinalized === true && (
+              <button
+                onClick={() => setActiveTab("publications")}
+                className={`py-2 px-4 ${activeTab === "publications"
+                    ? "border-b-4 border-[#45C0C9] text-[#45C0C9] font-semibold"
+                    : "text-gray-500 hover:text-[#45C0C9]"
+                  }`}
+                aria-current={activeTab === "publications" ? "page" : undefined}
+              >
+                <FiBook className="inline-block mr-1" />
+                Upload Bank Slip
+              </button>
             )}
             {/* Conditionally render the ID Card tab */}
             {approvalStatus === "Approved" && paymentApprovalStatus === "Approved" && isFinalized === true && (
               <button
                 onClick={() => setActiveTab("idcard")}
-                className={`py-2 px-4 ${
-                  activeTab === "idcard"
+                className={`py-2 px-4 ${activeTab === "idcard"
                     ? "border-b-4 border-[#45C0C9] text-[#45C0C9] font-semibold"
                     : "text-gray-500 hover:text-[#45C0C9]"
-                }`}
+                  }`}
                 aria-current={activeTab === "idcard" ? "page" : undefined}
               >
                 <FiImage className="inline-block mr-1" />
@@ -499,9 +493,8 @@ const DoctorDashboard = () => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className={`bg-[#45C0C9] hover:bg-[#3dadb7] text-white font-semibold py-2 px-6 rounded transition duration-300 shadow-sm ${
-                        isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-                      }`}
+                      className={`bg-[#45C0C9] hover:bg-[#3dadb7] text-white font-semibold py-2 px-6 rounded transition duration-300 shadow-sm ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                        }`}
                     >
                       {isSubmitting ? 'Saving...' : 'Save Changes'}
                     </button>
@@ -513,9 +506,8 @@ const DoctorDashboard = () => {
                       type="button"
                       onClick={handleFinalize}
                       disabled={isSubmitting}
-                      className={`bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded transition duration-300 shadow-sm ${
-                        isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-                      }`}
+                      className={`bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded transition duration-300 shadow-sm ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                        }`}
                     >
                       {isSubmitting ? 'Finalizing...' : 'Finalize Submission'}
                     </button>

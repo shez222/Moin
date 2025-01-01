@@ -10,7 +10,7 @@ const ContactUs = () => {
             Contact Us
           </h2>
           <p className="text-[#1D3851] text-base">
-            Feel Free To Contact Us At Anytime, We Will Get Back As Soon As Possible
+            {/* Feel Free To Contact Us At Anytime, We Will Get Back As Soon As Possible */}
           </p>
         </div>
 

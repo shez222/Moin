@@ -1,5 +1,3 @@
-// /app/login/page.js
-
 "use client";
 import React, { useState, useContext } from "react";
 import { useRouter } from "next/navigation";
@@ -13,8 +11,8 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false); // State for loading status
 
   const router = useRouter(); // Initialize useRouter
-  const { login,auth } = useContext(AuthContext); // Get login function from context
- 
+  const { login, auth } = useContext(AuthContext); // Get login function from context
+
   // Function to toggle password visibility
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
@@ -78,11 +76,19 @@ export default function LoginPage() {
   return (
     <div className="flex flex-col lg:flex-row min-h-screen bg-gray-100">
       {/* Left Section */}
-      <div className="w-full lg:w-1/2 bg-gradient-to-r from-blue-600 to-orange-500 flex justify-center items-center">
+      <div
+        className="w-full lg:w-1/2 flex flex-col justify-between items-center py-40"
+        style={{ backgroundColor: "#38b2ac" }} // Teal color matching "Pakistan Neurology Network" text
+      >
         <img
-          src="/PSNHub11.png" // Replace with your actual logo path
-          alt="Pakistan Society of Neurology"
-          className="w-2/3 lg:w-3/4 h-auto"
+          src="/PSN.jpg" // Replace with your actual logo path
+          alt="PSN Logo"
+          className="w-1/3 h-auto"
+        />
+        <img
+          src="/neuro11.png" // Replace with your actual logo path
+          alt="Neuro Logo"
+          className="w-1/3 h-auto"
         />
       </div>
 
@@ -90,10 +96,8 @@ export default function LoginPage() {
       <div className="w-full lg:w-1/2 flex items-center justify-center py-12 px-8 bg-white">
         <div className="max-w-md w-full">
           <h1 className="text-2xl lg:text-4xl font-semibold mb-6 text-gray-700 text-left">
-            Welcome to{" "}
-            <br />
             <span className="text-teal-500 font-bold">
-              Pakistan Society of Neurology
+              Pakistan Neurology Network
             </span>
           </h1>
 
@@ -156,7 +160,6 @@ export default function LoginPage() {
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
-                    // Hide Icon
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-5"
@@ -166,7 +169,6 @@ export default function LoginPage() {
                       <path d="M3.707 2.293a1 1 0 00-1.414 1.414l1.418 1.418C2.948 6.092 1.5 8.756 1.5 10c0 1.244 1.448 3.908 4.205 6.291l1.414 1.414a1 1 0 001.414-1.414L5.619 16.705C4.191 15.471 3.5 13.828 3.5 13c0-.828.691-2.471 2.119-3.705l1.414-1.414a5.975 5.975 0 012.462-1.502l1.414-1.414A1 1 0 0010 6a1 1 0 00-.293-.707l-1.414-1.414A1 1 0 006 3a5.978 5.978 0 00-2.293.707L3.707 2.293zM10 13a3 3 0 100-6 3 3 0 000 6z" />
                     </svg>
                   ) : (
-                    // Show Icon
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-5"
@@ -185,9 +187,8 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full bg-teal-500 text-white py-2 rounded-md font-medium hover:bg-teal-600 transition duration-200 ${
-                loading ? "opacity-50 cursor-not-allowed" : ""
-              }`}
+              className={`w-full bg-teal-500 text-white py-2 rounded-md font-medium hover:bg-teal-600 transition duration-200 ${loading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
             >
               {loading ? "Logging in..." : "Login"}
             </button>
@@ -203,9 +204,3 @@ export default function LoginPage() {
     </div>
   );
 }
-
-
-
-
-
-
